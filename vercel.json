@@ -1,12 +1,4 @@
 {
-  "buildCommand": "cd artifacts/wedding-invitation && npm install && npm run build",
-  "outputDirectory": "artifacts/wedding-invitation/dist/public",
-  "installCommand": "cd artifacts/wedding-invitation && npm install",
-  "framework": null,
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
 }
