@@ -1,5 +1,5 @@
 import { CandleFlame } from "./CandleFlame";
-import envelopeImg from "@assets/date_1780946050325.png";
+import envelopeImg from "/date_1780946050325.png";
 
 interface EnvelopeScreenProps {
   onOpen: () => void;
