@@ -1,0 +1,62 @@
+Build a wedding invitation web app using React + Vite + Tailwind CSS.
+
+---
+
+SCREEN 1 — The Envelope:
+- Full screen black background
+- Center: realistic envelope component using a real envelope image 
+  (use this free image URL: https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=600)
+- Red wax seal SVG centered on envelope flap, pulsing glow animation to hint clickability
+- Subtle floating candle flame animations on both sides of the envelope
+- Small text below: "اضغط على الختم" with fade pulse
+
+---
+
+ON SEAL CLICK — Cinematic zoom-in animation:
+- The envelope scales up rapidly and the camera flies INTO the envelope
+- Use CSS keyframe: scale from 1 → 8, combined with slight rotation and blur
+- Simultaneously fade to cream/ivory white
+- Duration: 1.2 seconds, ease-in acceleration (feels like flying inside)
+- Then transition to Screen 2
+
+---
+
+SCREEN 2 — The Invitation Card:
+- Background: deep dark navy or black with gold particle floating effect (use canvas)
+- Beautiful invitation card slides up from bottom with spring animation
+- Card style: ivory/cream (#f9f3e3), elegant border with gold ornament corners (CSS)
+- Card content (RTL Arabic + English mix):
+
+  Top: small gold text "YOU ARE INVITED"
+  Couple photo placeholder: circular frame with initials "A & Y"
+  Arabic: "يسعدنا دعوتكم لحضور حفل زفاف"
+  Names: أحمد & يارا — large elegant serif font (Playfair Display)
+  Date: الجمعة ٢٠ سبتمبر ٢٠٢٥ — ٨ مساءً
+  Venue: قاعة نايل رينبو — المعادي، القاهرة
+
+- Live countdown timer (days / hours / minutes / seconds) with gold styling
+
+- Two buttons:
+  1. "احفظ الموعد" → opens Google Calendar link
+  2. "خريطة القاعة" → opens Google Maps link
+
+---
+
+AUDIO:
+- On seal click: play a soft wax seal breaking sound (use Web Audio API to generate 
+  a short crack sound — no external file needed)
+- After zoom animation: autoplay a soft elegant background music loop
+  Use this royalty-free music URL: 
+  https://www.bensound.com/bensound-music/bensound-romantic.mp3
+- Add a small mute/unmute button (top right corner)
+
+---
+
+DESIGN RULES:
+- Fonts: Google Fonts — Playfair Display + Cormorant Garamond
+- Colors: black, deep ivory #f9f3e3, gold #c9a84c, deep red #8b1a1a
+- Gold floating particles on Screen 2 using HTML canvas
+- Fully responsive — mobile first
+- All Arabic text: direction RTL, font-size comfortable for mobile
+- Smooth, cinematic feel throughout — no cheap animations
+- No placeholder boxes — everything styled properly

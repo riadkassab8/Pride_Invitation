@@ -1,0 +1,118 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: rsvp
+    description: RSVP operations
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /rsvps:
+    post:
+      operationId: submitRsvp
+      tags: [rsvp]
+      summary: Submit an RSVP
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RsvpInput"
+      responses:
+        "201":
+          description: RSVP created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rsvp"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+    get:
+      operationId: listRsvps
+      tags: [rsvp]
+      summary: List all RSVPs
+      responses:
+        "200":
+          description: List of RSVPs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Rsvp"
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    Rsvp:
+      type: object
+      required: [id, name, phone, attending, guests, createdAt]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        phone:
+          type: string
+        attending:
+          type: string
+        guests:
+          type: integer
+        message:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+          format: date-time
+    RsvpInput:
+      type: object
+      required: [name, phone, attending, guests]
+      properties:
+        name:
+          type: string
+          minLength: 1
+        phone:
+          type: string
+          minLength: 1
+        attending:
+          type: string
+          enum: [yes, no, maybe]
+        guests:
+          type: integer
+          minimum: 1
+          maximum: 20
+        message:
+          type: string
+    ApiError:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
